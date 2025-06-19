@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kothari Investment & Finance | Loans & Financial Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #003366;
+            --accent: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: clamp(18px, 4vw, 24px); 
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: clamp(20px, 4vw, 24px);
+        }
+        
+        nav {
+            width: 100%;
+            order: 3;
+            margin-top: 15px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+        
+        nav.active {
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        nav ul li {
+            margin: 5px 0;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 4px;
+            display: block;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px 15px;
+            margin-left: auto;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(12px, 3vw, 14px);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        .contact-info a i {
+            margin-right: 5px;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 15px;
+            order: 2;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: clamp(60px, 10vw, 100px) 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .hero .container {
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: clamp(28px, 6vw, 48px);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: clamp(16px, 3vw, 20px);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 30px);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .services {
+            padding: clamp(40px, 8vw, 80px) 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(30px, 6vw, 50px);
+            padding: 0 15px;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(15px, 3vw, 30px);
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: clamp(30px, 6vw, 40px);
+            padding: clamp(20px, 4vw, 30px);
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: clamp(15px, 3vw, 25px);
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: clamp(18px, 4vw, 22px);
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: clamp(15px, 3vw, 20px);
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .about {
+            padding: clamp(40px, 8vw, 80px) 0;
+            background-color: var(--light);
+        }
+        
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(20px, 5vw, 50px);
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            width: 100%;
+        }
+        
+        .about-content h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .testimonials {
+            padding: clamp(40px, 8vw, 80px) 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(15px, 3vw, 30px);
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: clamp(20px, 4vw, 30px);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: clamp(60px, 10vw, 80px);
+            color: rgba(0, 86, 179, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+            font-size: clamp(16px, 3vw, 18px);
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: clamp(13px, 3vw, 14px);
+        }
+        
+        .contact {
+            padding: clamp(40px, 8vw, 80px) 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 5vw, 50px);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-info h3 {
+            font-size: clamp(22px, 4vw, 24px);
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: clamp(18px, 4vw, 20px);
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: clamp(20px, 4vw, 30px);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h3 {
+            font-size: clamp(22px, 4vw, 24px);
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: clamp(15px, 3vw, 20px);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: clamp(10px, 3vw, 12px) 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: clamp(14px, 3vw, 16px);
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: clamp(30px, 6vw, 50px) 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 5vw, 30px);
+            margin-bottom: 30px;
+        }
+        
+        .footer-col {
+            margin-bottom: clamp(15px, 4vw, 20px);
+        }
+        
+        .footer-col h3 {
+            font-size: clamp(18px, 4vw, 20px);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            color: #ccc;
+            font-size: clamp(13px, 3vw, 14px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: clamp(13px, 3vw, 14px);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(35px, 8vw, 40px);
+            height: clamp(35px, 8vw, 40px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: clamp(16px, 3vw, 18px);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+        
+        @media (min-width: 576px) {
+            .hero h1 {
+                font-size: clamp(32px, 6vw, 42px);
+            }
+            
+            .hero p {
+                font-size: clamp(16px, 3vw, 18px);
+            }
+            
+            .contact-info a {
+                white-space: normal;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .header-container {
+                flex-wrap: nowrap;
+            }
+            
+            .logo {
+                margin-bottom: 0;
+                flex: 0 1 auto;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav {
+                display: block;
+                width: auto;
+                order: initial;
+                margin-top: 0;
+                margin-left: 30px;
+                flex: 1 1 auto;
+            }
+            
+            nav ul {
+                flex-direction: row;
+                width: auto;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .contact-info {
+                margin-left: auto;
+                justify-content: flex-end;
+                flex: 0 1 auto;
+            }
+            
+            .about-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .about-image, .about-content {
+                flex: 1;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero {
+                min-height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: clamp(36px, 6vw, 48px);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hand-holding-usd"></i>
+                <span>Kothari Investment & Finance</span>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <a href="tel:9325955111"><i class="fas fa-phone"></i> 9325955111</a>
+                <a href="tel:9923451707"><i class="fas fa-phone"></i> 9923451707</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>We Value Your Time and Money</h1>
+            <p>Providing trusted financial solutions with personalized service to help you achieve your dreams and secure your future.</p>
+            <a href="#contact" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Financial Services</h2>
+                <p>We offer a comprehensive range of financial products tailored to meet your unique needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Personal Loan</h3>
+                        <p>Flexible personal loans with competitive interest rates and quick approval to meet your immediate needs.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Home Loan</h3>
+                        <p>Make your dream home a reality with our customized home loan solutions and attractive interest rates.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Car Loan</h3>
+                        <p>Finance your new or used car with our hassle-free car loans and minimal documentation.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Business Loan</h3>
+                        <p>Fuel your business growth with our unsecured business loans designed for entrepreneurs.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Education Loan</h3>
+                        <p>Invest in your future with our education loans that cover tuition fees and living expenses.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Insurance</h3>
+                        <p>Protect what matters most with our life and general insurance products.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80" alt="Kothari Investment & Finance Team" loading="lazy">
+            </div>
+            <div class="about-content">
+                <h2>About Kothari Investment & Finance</h2>
+                <p>With years of experience in the financial sector, Kothari Investment & Finance has established itself as a trusted name in Aurangabad for all loan and financial services.</p>
+                <p>Our team of financial experts is dedicated to providing personalized solutions that align with your financial goals. We understand that every individual and business has unique needs, and we tailor our services accordingly.</p>
+                <p>At Kothari Investment & Finance, we value your time and money, ensuring transparent processes, competitive rates, and exceptional customer service at every step.</p>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from our satisfied customers who have benefited from our financial services.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Kothari Investment & Finance made my home loan process incredibly smooth. Their team was professional and guided me at every step. I got the best interest rate in the market!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Sharma" loading="lazy">
+                        <div class="author-info">
+                            <h4>Rahul Sharma</h4>
+                            <p>Home Loan Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>As a small business owner, I needed quick financing. Kothari's unsecured business loan was the perfect solution with minimal paperwork and fast disbursal. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Patel" loading="lazy">
+                        <div class="author-info">
+                            <h4>Priya Patel</h4>
+                            <p>Business Loan Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I was struggling to finance my daughter's education abroad. The team at Kothari Investment understood my needs and arranged an education loan with flexible repayment options.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Vikram Joshi" loading="lazy">
+                        <div class="author-info">
+                            <h4>Vikram Joshi</h4>
+                            <p>Education Loan Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our financial experts for personalized advice and solutions.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Our Contact Information</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kothari Niwas, Ajab Nagar, Aurangabad</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <span>9325955111, 9923451707</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <span>kotharifinance1@gmail.com</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <span>Monday - Saturday: 9:00 AM - 6:00 PM</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="enquiryForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="personal-loan">Personal Loan</option>
+                                <option value="home-loan">Home Loan</option>
+                                <option value="car-loan">Car Loan</option>
+                                <option value="business-loan">Business Loan</option>
+                                <option value="education-loan">Education Loan</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="mutual-funds">Mutual Funds</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Kothari Investment & Finance is a trusted financial services provider in Aurangabad, offering a wide range of loan and insurance products with personalized service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Loan</a></li>
+                        <li><a href="#">Home Loan</a></li>
+                        <li><a href="#">Car Loan</a></li>
+                        <li><a href="#">Business Loan</a></li>
+                        <li><a href="#">Education Loan</a></li>
+                        <li><a href="#">Insurance Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kothari Niwas, Ajab Nagar, Aurangabad</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <span>9325955111, 9923451707</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <span>kotharifinance1@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kothari Investment & Finance. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value || 'a service';
+            
+            alert(`Thank you, ${name}! Your enquiry for ${service} has been received. We will contact you shortly at ${phone}.`);
+            
+            this.reset();
+        });
+        
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        function checkScreenSize() {
+            if (window.innerWidth < 768) {
+                menuToggle.style.display = 'block';
+                mainNav.classList.remove('active');
+            } else {
+                menuToggle.style.display = 'none';
+                mainNav.classList.add('active');
+            }
+        }
+        
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+    </script>
+</body>
+</html>
